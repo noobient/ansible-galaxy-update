@@ -12,9 +12,13 @@
     #mode: '0644'
 # TODO enable once available for ARM64
 - include_role:
-    name: thirdparty
-  loop:
-    - { name: 'Ansible', gpg_server: 'keyserver.ubuntu.com', gpg_id: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367', repo_file: 'ansible', package: 'ansible' }
+    name: bviktor.thirdparty
+  vars:
+    - name: 'Ansible'
+    - gpg_server: 'keyserver.ubuntu.com'
+    - gpg_id: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
+    - repo_file: 'ansible'
+    - package: 'ansible'
   when: (ansible_pkg_mgr == 'apt') and (ansible_architecture != 'aarch64')
 
 #- name: Install Ansible
