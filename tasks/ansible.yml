@@ -7,9 +7,9 @@
 
 # TODO add-apt-repository / apt_repository doesn't support HTTPS so do it manually
 #- name: Add Ansible PPA
-  #apt_repository:
-    #repo: ppa:ansible/ansible
-    #mode: '0644'
+#  apt_repository:
+#    repo: ppa:ansible/ansible
+#    mode: '0644'
 # TODO enable once available for ARM64
 - include_role:
     name: bviktor.thirdparty
@@ -22,10 +22,10 @@
   when: (ansible_pkg_mgr == 'apt') and (ansible_architecture != 'aarch64')
 
 #- name: Install Ansible
-  #apt:
-    #name: ansible
-    #state: latest
-  #when: ansible_pkg_mgr == 'apt'
+#  apt:
+#    name: ansible
+#    state: latest
+#  when: ansible_pkg_mgr == 'apt'
 
 - name: Enable EPEL repo
   dnf:
