@@ -1,5 +1,5 @@
 ---
-- name: Update yum info and all OS packages
+- name: Update DNF info and all OS packages
   dnf:
     name: '*'
     state: latest
