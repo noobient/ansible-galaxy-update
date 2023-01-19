@@ -2,7 +2,7 @@
 
 ## Synopsys
 
-This role updates the target host and enabled automatic updates.
+This role updates the target host and enables automatic updates.
 
 ## Parameters
 
