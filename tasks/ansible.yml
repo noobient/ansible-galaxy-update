@@ -12,7 +12,7 @@
 #    mode: '0644'
 # TODO enable once available for ARM64
 - include_role:
-    name: bviktor.thirdparty
+    name: noobient.thirdparty
   vars:
     name: 'Ansible'
     gpg_server: 'keyserver.ubuntu.com'
