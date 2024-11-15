@@ -3,7 +3,7 @@
 - name: Update package manager cache
   apt:
     update_cache: true
-  when: ansible_pkg_mgr == 'apt'
+  when: ansible_os_family == 'Debian'
 
 # TODO add-apt-repository / apt_repository doesn't support HTTPS so do it manually
 #- name: Add Ansible PPA
@@ -19,29 +19,29 @@
     gpg_id: '6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367'
     repo_file: 'ansible'
     package: 'ansible'
-  when: (ansible_pkg_mgr == 'apt') and (ansible_architecture != 'aarch64')
+  when: (ansible_os_family == 'Debian') and (ansible_architecture != 'aarch64')
 
 #- name: Install Ansible
 #  apt:
 #    name: ansible
 #    state: latest
-#  when: ansible_pkg_mgr == 'apt'
+#  when: ansible_os_family == 'Debian'
 
 - name: Enable EPEL repo
   dnf:
     name: epel-release
     state: latest
-  when: (ansible_pkg_mgr == 'dnf') and (ansible_distribution != 'Fedora')
+  when: (ansible_os_family == 'RedHat') and (ansible_distribution != 'Fedora')
 
 - name: Install Ansible
   dnf:
     name: ansible
     state: latest
-  when: ansible_pkg_mgr == 'dnf'
+  when: ansible_os_family == 'RedHat'
 
 - name: Show IP on login screen
   replace:
     path: /etc/issue
     regexp: '(Ubuntu .*)\\l$'
     replace: '\1\\l (\\4)'
-  when: ansible_pkg_mgr == 'apt'
+  when: ansible_os_family == 'Debian'

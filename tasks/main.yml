@@ -2,13 +2,13 @@
 #- include_tasks: repo.yml
 # TODO extend to EL
 - include_tasks: release.yml
-  when: ansible_pkg_mgr == 'apt'
+  when: ansible_os_family == 'Debian'
 # Installing Ansible doesn't belong here
 #- include_tasks: ansible.yml
 - include_tasks: update_ubuntu.yml
-  when: ansible_pkg_mgr == 'apt'
+  when: ansible_os_family == 'Debian'
 - include_tasks: update_el8.yml
-  when: ansible_pkg_mgr == 'dnf'
+  when: ansible_os_family == 'RedHat'
 # TODO fix for ARM64
 - include_tasks: hwe.yml
-  when: (ansible_virtualization_type != 'docker') and (ansible_pkg_mgr == 'apt') and (ansible_architecture != 'aarch64')
+  when: (ansible_virtualization_type != 'docker') and (ansible_os_family == 'Debian') and (ansible_architecture != 'aarch64')
