@@ -3,6 +3,7 @@
   package:
     name: "python3-libdnf{% if ansible_pkg_mgr == 'dnf5' %}5{% endif %}"
     state: latest
+    use: dnf
 
 - name: Update DNF info and all OS packages
   dnf:
