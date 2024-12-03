@@ -1,9 +1,9 @@
 ---
 - name: Install DNF backend
-  package:
-    name: "python3-libdnf{% if ansible_pkg_mgr == 'dnf5' %}5{% endif %}"
-    state: latest
-    use: dnf
+  command:
+    cmd: "dnf -y install python3-libdnf{% if ansible_pkg_mgr == 'dnf5' %}5{% endif %}"
+  register: noobient_update_dnf_backend
+  changed_when: ('Nothing to do' not in noobient_update_dnf_backend.stdout)
 
 - name: Update DNF info and all OS packages
   dnf:
