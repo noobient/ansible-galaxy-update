@@ -1,15 +1,7 @@
 ---
+# TODO enable for 26.04 once released
 - name: Install HWE kernel
   apt:
     name: "linux-generic-hwe-{{ ansible_facts['distribution_version'] }}-edge"
     state: latest
-
-- include_role: # noqa name
-    name: noobient.desktopcheck
-
-# TODO enable for 20.04 once released
-- name: Install HWE X.Org
-  apt:
-    name: "xserver-xorg-hwe-{{ ansible_facts['distribution_version'] }}"
-    state: latest
-  when: (target_is_desktop) and (ansible_facts['distribution_version'] == '18.04')
+  when: (ansible_facts['distribution_version'] != '26.04')
