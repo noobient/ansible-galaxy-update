@@ -1,7 +1,7 @@
 ---
 - name: Install DNF backend
   command:
-    cmd: "dnf -y install python3-libdnf{% if ansible_pkg_mgr == 'dnf5' %}5{% endif %}"
+    cmd: "dnf -y install python3-libdnf{% if ansible_facts['pkg_mgr'] == 'dnf5' %}5{% endif %}"
   register: noobient_update_dnf_backend
   changed_when: ('Nothing to do' not in noobient_update_dnf_backend.stdout)
 

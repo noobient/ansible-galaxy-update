@@ -11,4 +11,4 @@
   when: ansible_facts['os_family'] == 'RedHat'
 # TODO fix for ARM64
 - include_tasks: hwe.yml
-  when: (ansible_virtualization_type != 'docker') and (ansible_facts['os_family'] == 'Debian') and (ansible_facts['architecture'] != 'aarch64')
+  when: (ansible_facts['virtualization_type'] != 'docker') and (ansible_facts['os_family'] == 'Debian') and (ansible_facts['architecture'] != 'aarch64')
